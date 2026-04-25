@@ -1,0 +1,94 @@
+{
+  "benchmarks": [
+    {
+      "id": 1,
+      "dataset": "Iris.csv",
+      "category": "statistics",
+      "prompt": "Calculate the mean, standard deviation, max, and min for each feature"
+    },
+    {
+      "id": 2,
+      "dataset": "Iris.csv",
+      "category": "visualization",
+      "prompt": "Plot a histogram for each of the four features"
+    },
+    {
+      "id": 3,
+      "dataset": "Iris.csv",
+      "category": "visualization",
+      "prompt": "Plot a boxplot of petal length grouped by species"
+    },
+    {
+      "id": 4,
+      "dataset": "Iris.csv",
+      "category": "modeling",
+      "prompt": "Train a KNN classifier to predict species and output the accuracy"
+    },
+    {
+      "id": 5,
+      "dataset": "titanic.csv",
+      "category": "statistics",
+      "prompt": "Calculate the survival rate for each passenger class"
+    },
+    {
+      "id": 6,
+      "dataset": "titanic.csv",
+      "category": "cleaning",
+      "prompt": "Fill missing values in the Age column with the median"
+    },
+    {
+      "id": 7,
+      "dataset": "titanic.csv",
+      "category": "visualization",
+      "prompt": "Plot a bar chart comparing survival counts by gender"
+    },
+    {
+      "id": 8,
+      "dataset": "titanic.csv",
+      "category": "statistics",
+      "prompt": "Count the number of passengers for each embarkation port"
+    },
+    {
+      "id": 9,
+      "dataset": "titanic.csv",
+      "category": "visualization",
+      "prompt": "Plot a histogram of ticket fares"
+    },
+    {
+      "id": 10,
+      "dataset": "titanic.csv",
+      "category": "modeling",
+      "prompt": "Train a logistic regression model to predict survival and output the accuracy"
+    },
+    {
+      "id": 11,
+      "dataset": "housing.csv",
+      "category": "cleaning",
+      "prompt": "Output the number of missing values in each column"
+    },
+    {
+      "id": 12,
+      "dataset": "housing.csv",
+      "category": "visualization",
+      "prompt": "Plot a histogram of house prices"
+    },
+    {
+      "id": 13,
+      "dataset": "housing.csv",
+      "category": "statistics",
+      "prompt": "Calculate the correlation between each feature and house price, sorted by value"
+    },
+    {
+      "id": 14,
+      "dataset": "housing.csv",
+      "category": "visualization",
+      "prompt": "Plot a scatter map of house prices by geographic location"
+    },
+    {
+      "id": 15,
+      "dataset": "housing.csv",
+      "category": "modeling",
+      "prompt": "Train a linear regression model to predict house prices and output the RMSE"
+    }
+  ]
+}
