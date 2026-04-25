@@ -3,92 +3,107 @@
     {
       "id": 1,
       "dataset": "Iris.csv",
+      "difficulty": "easy",
       "category": "statistics",
-      "prompt": "Calculate the mean, standard deviation, max, and min for each feature"
+      "prompt": "Calculate the mean, standard deviation, max, and min for each numeric feature"
     },
     {
       "id": 2,
       "dataset": "Iris.csv",
+      "difficulty": "easy",
       "category": "visualization",
-      "prompt": "Plot a histogram for each of the four features"
+      "prompt": "Plot a histogram for each of the four numeric features"
     },
     {
       "id": 3,
       "dataset": "Iris.csv",
+      "difficulty": "medium",
       "category": "visualization",
-      "prompt": "Plot a boxplot of petal length grouped by species"
+      "prompt": "Plot a boxplot of the length column grouped by species"
     },
     {
       "id": 4,
       "dataset": "Iris.csv",
+      "difficulty": "hard",
       "category": "modeling",
-      "prompt": "Train a KNN classifier to predict species and output the accuracy"
+      "prompt": "Encode the species column, split the data, train a KNN classifier, and output the accuracy and confusion matrix"
     },
     {
       "id": 5,
       "dataset": "titanic.csv",
+      "difficulty": "easy",
       "category": "statistics",
       "prompt": "Calculate the survival rate for each passenger class"
     },
     {
       "id": 6,
       "dataset": "titanic.csv",
+      "difficulty": "easy",
       "category": "cleaning",
-      "prompt": "Fill missing values in the Age column with the median"
+      "prompt": "Fill missing values in the age column with the median and verify no missing values remain"
     },
     {
       "id": 7,
       "dataset": "titanic.csv",
+      "difficulty": "medium",
       "category": "visualization",
       "prompt": "Plot a bar chart comparing survival counts by gender"
     },
     {
       "id": 8,
       "dataset": "titanic.csv",
+      "difficulty": "medium",
       "category": "statistics",
-      "prompt": "Count the number of passengers for each embarkation port"
+      "prompt": "Calculate the average fare paid by survivors vs non-survivors for each passenger class"
     },
     {
       "id": 9,
       "dataset": "titanic.csv",
-      "category": "visualization",
-      "prompt": "Plot a histogram of ticket fares"
+      "difficulty": "hard",
+      "category": "cleaning",
+      "prompt": "Fill all missing values using appropriate strategies for each column type, encode all categorical columns, and output a summary of changes made"
     },
     {
       "id": 10,
       "dataset": "titanic.csv",
+      "difficulty": "hard",
       "category": "modeling",
-      "prompt": "Train a logistic regression model to predict survival and output the accuracy"
+      "prompt": "Clean missing values, encode categorical features, train a logistic regression model to predict survival, and output accuracy, precision, recall, and F1 score"
     },
     {
       "id": 11,
       "dataset": "housing.csv",
+      "difficulty": "easy",
       "category": "cleaning",
       "prompt": "Output the number of missing values in each column"
     },
     {
       "id": 12,
       "dataset": "housing.csv",
+      "difficulty": "easy",
       "category": "visualization",
-      "prompt": "Plot a histogram of house prices"
+      "prompt": "Plot a histogram of the house price column"
     },
     {
       "id": 13,
       "dataset": "housing.csv",
+      "difficulty": "medium",
       "category": "statistics",
-      "prompt": "Calculate the correlation between each feature and house price, sorted by value"
+      "prompt": "Calculate the correlation between each feature and the target price column, sorted by absolute value"
     },
     {
       "id": 14,
       "dataset": "housing.csv",
+      "difficulty": "medium",
       "category": "visualization",
-      "prompt": "Plot a scatter map of house prices by geographic location"
+      "prompt": "Plot a scatter map of house prices using latitude and longitude columns"
     },
     {
       "id": 15,
       "dataset": "housing.csv",
+      "difficulty": "hard",
       "category": "modeling",
-      "prompt": "Train a linear regression model to predict house prices and output the RMSE"
+      "prompt": "Handle missing values, encode categorical columns if any, train a linear regression model to predict house prices, and output RMSE and R-squared score"
     }
   ]
 }
