@@ -164,9 +164,9 @@
     {
       "id": 24,
       "dataset": "Iris.csv",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "category": "modeling",
-      "prompt": "Using the Iris dataset from Iris.csv, create a pandas DataFrame containing the four numeric feature columns and the Species target column. Output the first five rows."
+      "prompt": "Using the Iris dataset, encode the Species column using LabelEncoder, split the data into train and test sets with ratio 8:2, train a DecisionTreeClassifier, and output accuracy, classification report, and feature importances sorted in descending order."
     },
     {
       "id": 25,
