@@ -2,108 +2,213 @@
   "benchmarks": [
     {
       "id": 1,
-      "dataset": "Iris.csv",
-      "difficulty": "easy",
-      "category": "statistics",
-      "prompt": "Calculate the mean, standard deviation, max, and min for each numeric feature"
+      "dataset": "Titanic.csv",
+      "difficulty": "medium",
+      "category": "pandas",
+      "prompt": "Using the Titanic dataset, add a Date column by assigning consecutive dates starting from 2018-01-01 to the rows, then extract the month name and year from Date. Output the first 10 rows with Date, month_name, and year."
     },
     {
       "id": 2,
-      "dataset": "Iris.csv",
-      "difficulty": "easy",
-      "category": "visualization",
-      "prompt": "Plot a histogram for each of the four numeric features"
+      "dataset": "Titanic.csv",
+      "difficulty": "medium",
+      "category": "pandas",
+      "prompt": "Using the Titanic dataset, fill missing values in Age with the median Age. Output the number of missing values in Age before and after filling."
     },
     {
       "id": 3,
       "dataset": "Iris.csv",
       "difficulty": "medium",
-      "category": "visualization",
-      "prompt": "Plot a boxplot of the length column grouped by species"
+      "category": "pandas",
+      "prompt": "Using the Iris dataset, group by Species and compute the mean and standard deviation of SepalLengthCm for each species. Output the result as a table."
     },
     {
       "id": 4,
-      "dataset": "Iris.csv",
-      "difficulty": "hard",
-      "category": "modeling",
-      "prompt": "Encode the species column, split the data, train a KNN classifier, and output the accuracy and confusion matrix"
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "pandas",
+      "prompt": "Using the housing dataset, select the numeric columns, add one all-zero row and one all-zero column to the numeric DataFrame, then remove all rows and columns whose values sum to zero. Output the shape before and after removing the zero-sum rows and columns."
     },
     {
       "id": 5,
-      "dataset": "titanic.csv",
-      "difficulty": "easy",
-      "category": "statistics",
-      "prompt": "Calculate the survival rate for each passenger class"
+      "dataset": "Titanic.csv",
+      "difficulty": "medium",
+      "category": "pandas",
+      "prompt": "Using the Titanic dataset, create a mixed object column by combining values from Age with some string values from Sex, then select only the rows where the mixed column can be converted to a numeric value. Output the first 10 selected rows and the selected row count."
     },
     {
       "id": 6,
-      "dataset": "titanic.csv",
-      "difficulty": "easy",
-      "category": "cleaning",
-      "prompt": "Fill missing values in the age column with the median and verify no missing values remain"
+      "dataset": "Titanic.csv",
+      "difficulty": "medium",
+      "category": "pandas",
+      "prompt": "Using the Titanic dataset, group by Pclass and count how many passengers survived where the survived column equals 1. Output a table with Pclass and survivor_count."
     },
     {
       "id": 7,
-      "dataset": "titanic.csv",
+      "dataset": "Titanic.csv",
       "difficulty": "medium",
-      "category": "visualization",
-      "prompt": "Plot a bar chart comparing survival counts by gender"
+      "category": "pandas",
+      "prompt": "Using the Titanic dataset, filter passengers whose Fare is between 50 and 100 inclusive without using loops. Output the first 10 filtered rows and the number of selected rows."
     },
     {
       "id": 8,
-      "dataset": "titanic.csv",
+      "dataset": "housing.csv",
       "difficulty": "medium",
-      "category": "statistics",
-      "prompt": "Calculate the average fare paid by survivors vs non-survivors for each passenger class"
+      "category": "pandas",
+      "prompt": "Using the housing dataset, find all column names that contain the substring \"median\". Output the matching column names."
     },
     {
       "id": 9,
-      "dataset": "titanic.csv",
-      "difficulty": "hard",
-      "category": "cleaning",
-      "prompt": "Fill all missing values using appropriate strategies for each column type, encode all categorical columns, and output a summary of changes made"
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "numpy",
+      "prompt": "Using NumPy on the housing dataset, create an array from the total_bedrooms column, remove all NaN values, and output the cleaned array length and the mean of the cleaned array."
     },
     {
       "id": 10,
-      "dataset": "titanic.csv",
-      "difficulty": "hard",
-      "category": "modeling",
-      "prompt": "Clean missing values, encode categorical features, train a logistic regression model to predict survival, and output accuracy, precision, recall, and F1 score"
+      "dataset": "Iris.csv",
+      "difficulty": "medium",
+      "category": "numpy",
+      "prompt": "Using NumPy on the Iris dataset, create a numeric matrix from SepalLengthCm, SepalWidthCm, PetalLengthCm, and PetalWidthCm. Find the raveled index in C order of the largest value in the matrix. Output the raveled index and the maximum value."
     },
     {
       "id": 11,
       "dataset": "housing.csv",
-      "difficulty": "easy",
-      "category": "cleaning",
-      "prompt": "Output the number of missing values in each column"
+      "difficulty": "medium",
+      "category": "numpy",
+      "prompt": "Using NumPy on the housing dataset, create a numeric matrix excluding ocean_proximity and handle missing values appropriately. Find the row and column index of the minimum non-missing value in the matrix. Output the index tuple, the corresponding column name, and the minimum value."
     },
     {
       "id": 12,
-      "dataset": "housing.csv",
-      "difficulty": "easy",
-      "category": "visualization",
-      "prompt": "Plot a histogram of the house price column"
+      "dataset": "Iris.csv",
+      "difficulty": "medium",
+      "category": "numpy",
+      "prompt": "Using NumPy on the Iris dataset, calculate the element-wise average of SepalLengthCm, SepalWidthCm, PetalLengthCm, and PetalWidthCm for each row. Output the first 10 averages."
     },
     {
       "id": 13,
-      "dataset": "housing.csv",
-      "difficulty": "medium",
-      "category": "statistics",
-      "prompt": "Calculate the correlation between each feature and the target price column, sorted by absolute value"
+      "dataset": "Iris.csv",
+      "difficulty": "hard",
+      "category": "numpy",
+      "prompt": "Using NumPy on the Iris dataset, create a numeric matrix from SepalLengthCm, SepalWidthCm, PetalLengthCm, and PetalWidthCm. Treat each feature column as a vector and create a 3D array where each slice is the outer product of one feature column with itself. Output the shape of the resulting 3D array."
     },
     {
       "id": 14,
       "dataset": "housing.csv",
       "difficulty": "medium",
-      "category": "visualization",
-      "prompt": "Plot a scatter map of house prices using latitude and longitude columns"
+      "category": "numpy",
+      "prompt": "Using NumPy on the housing dataset, create a numeric matrix excluding ocean_proximity, then select the last value along the last dimension using ellipsis slicing so the same expression would work for arrays with different numbers of dimensions. Output the first 10 selected values."
     },
     {
       "id": 15,
+      "dataset": "Iris.csv",
+      "difficulty": "hard",
+      "category": "numpy",
+      "prompt": "Using NumPy on the Iris dataset, compute the correlation matrix of the four numeric flower features, then set all non-diagonal elements to zero without using loops. Output the resulting diagonal-only matrix."
+    },
+    {
+      "id": 16,
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "numpy",
+      "prompt": "Using NumPy on the housing dataset, min-max normalize the entire numeric feature matrix all together, not column by column. Exclude ocean_proximity from the matrix and output the normalized matrix shape, minimum, and maximum."
+    },
+    {
+      "id": 17,
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the housing dataset, create a color scatter plot of longitude versus latitude, with point color representing median_house_value. Add a colorbar and an appropriate title."
+    },
+    {
+      "id": 18,
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the housing dataset, plot a histogram of median_income and add a solid vertical line at the median value labeled \"median income\". Show the legend on the plot."
+    },
+    {
+      "id": 19,
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the housing dataset, compute the correlation matrix for numeric columns and plot it as a heatmap using matplotlib. Add a colorbar and readable tick labels."
+    },
+    {
+      "id": 20,
+      "dataset": "housing.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the housing dataset, plot a histogram of median_house_value and add blue dashed grid lines."
+    },
+    {
+      "id": 21,
+      "dataset": "Titanic.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the Titanic dataset, make a donut chart showing the passenger count by Pclass. Use wedge width 0.4 and include class labels."
+    },
+    {
+      "id": 22,
+      "dataset": "Iris.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the Iris dataset, compute the correlation matrix of the numeric flower features and plot it with matshow. Set the figure size to (8, 8) and add a colorbar."
+    },
+    {
+      "id": 23,
+      "dataset": "Iris.csv",
+      "difficulty": "medium",
+      "category": "visualization",
+      "prompt": "Using the Iris dataset, plot SepalLengthCm over the row index with label \"SepalLengthCm\" and display a legend with font size 8."
+    },
+    {
+      "id": 24,
+      "dataset": "Iris.csv",
+      "difficulty": "hard",
+      "category": "modeling",
+      "prompt": "Using the Iris dataset, encode the Species column using LabelEncoder, split the data into train and test sets with ratio 8:2, train a DecisionTreeClassifier, and output accuracy, classification report, and feature importances sorted in descending order."
+    },
+    {
+      "id": 25,
+      "dataset": "Titanic.csv",
+      "difficulty": "hard",
+      "category": "modeling",
+      "prompt": "Using the Titanic dataset, one-hot encode the categorical columns Sex and Embarked, convert the encoded result into a DataFrame, and merge it back with the numeric feature columns. Output the first 10 rows of the combined DataFrame."
+    },
+    {
+      "id": 26,
+      "dataset": "Titanic.csv",
+      "difficulty": "hard",
+      "category": "modeling",
+      "prompt": "Using the Titanic dataset, clean missing values, train a logistic regression model to predict survived, and use cross-validation to return predicted survival probabilities for each passenger. Output the first 10 predicted probabilities."
+    },
+    {
+      "id": 27,
       "dataset": "housing.csv",
       "difficulty": "hard",
       "category": "modeling",
-      "prompt": "Handle missing values, encode categorical columns if any, train a linear regression model to predict house prices, and output RMSE and R-squared score"
+      "prompt": "Using the housing dataset, handle missing numeric values, standardize the numeric feature columns, fit a KMeans model, and find the 50 samples closest to one chosen cluster center. Output the selected row indices and their distances to the cluster center."
+    },
+    {
+      "id": 28,
+      "dataset": "housing.csv",
+      "difficulty": "hard",
+      "category": "modeling",
+      "prompt": "Using the housing dataset, handle missing values, use numeric features excluding median_house_value to train an SVR model with an RBF kernel to predict median_house_value, and output RMSE and the first 10 predictions."
+    },
+    {
+      "id": 29,
+      "dataset": "Titanic.csv",
+      "difficulty": "hard",
+      "category": "modeling",
+      "prompt": "Using the Titanic dataset, create a text column by combining Name and Ticket, then use CountVectorizer with a custom tokenizer or token pattern so that punctuation characters appearing in the text, such as commas, periods, slashes, or parentheses, are preserved as tokens. Output part of the vocabulary."
+    },
+    {
+      "id": 30,
+      "dataset": "Titanic.csv",
+      "difficulty": "hard",
+      "category": "modeling",
+      "prompt": "Using the Titanic dataset, preprocess string or categorical features such as Sex and Embarked so they can be used to train a DecisionTreeClassifier to predict survived. Output accuracy and feature importances."
     }
   ]
 }
