@@ -39,6 +39,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from io import StringIO
 
+# Figure counter used by the patched plt.show() replacement.
+_fig_count = 0
+
 # Make the dataset available both as a file path and as a DataFrame.
 _CSV_PATH = {csv_path!r}
 df = pd.read_csv(_CSV_PATH)
@@ -114,12 +117,24 @@ def _patch_plt_show(code: str, tmpdir: str) -> str:
     """
     Replace plt.show() calls with code that saves the current figure to a
     uniquely named PNG file in tmpdir, then closes it.
-    This lets us capture matplotlib output without a display server.
+
+    Uses a global counter (_fig_count) injected into the harness to name
+    files sequentially. This avoids nested f-string quote conflicts that
+    arise when embedding os.listdir(tmpdir) inside a generated f-string.
+
+    The save path is built at patch time (Python side) using os.path.join,
+    so the generated snippet contains only a plain string literal with no
+    nested quotes or f-strings.
     """
+    # Build the output path prefix on the Python side to avoid any
+    # quote-nesting issues inside the generated code string.
+    fig_prefix = os.path.join(tmpdir, "figure_")
     save_snippet = (
-        f"plt.savefig(os.path.join({tmpdir!r}, "
-        f"f'figure_{{len(os.listdir({tmpdir!r}))}}.png'), "
-        f"dpi=100, bbox_inches='tight'); plt.close()"
+        ""
+        "_fig_count += 1; "
+        "plt.savefig(" + repr(fig_prefix + "{}") + ".format(_fig_count),"
+        " dpi=100, bbox_inches=" + repr("tight") + "); "
+        "plt.close()"
     )
     return code.replace("plt.show()", save_snippet)
 

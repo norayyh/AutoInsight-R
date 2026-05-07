@@ -12,7 +12,7 @@ Pipeline model strategy (visible to user):
     - Sonnet : auto-selected upfront for complex tasks (ML keywords detected),
                and always used as a hard fallback on the final repair attempt.
 """
-
+ 
 import io
 import os
 import tempfile
@@ -139,12 +139,17 @@ with st.sidebar:
 
     st.divider()
 
-    # Model strategy legend
-    st.subheader("Model strategy")
-    st.markdown(
-        f"**Default** — {model_label(MODEL_HAIKU)} for standard EDA  \n"
-        f"**Auto-upgrade** — {model_label(MODEL_SONNET)} when ML keywords detected  \n"
-        f"**Hard fallback** — {model_label(MODEL_SONNET)} on final retry (attempt {MAX_RETRIES})"
+    # Model selection
+    st.subheader("Model")
+    model_choice = st.radio(
+        "Model",
+        options      = [MODEL_HAIKU, MODEL_SONNET],
+        format_func  = model_label,
+        index        = 0,
+        horizontal   = True,
+        label_visibility = "collapsed",
+        help = "Haiku: fast and cheap. Sonnet: stronger for complex tasks. "
+               f"Either way, Sonnet is always used as a hard fallback on attempt {MAX_RETRIES}."
     )
 
 
@@ -161,7 +166,7 @@ prompt = st.text_area(
 
 run_disabled = not api_key or "csv_bytes" not in st.session_state or not prompt.strip()
 run_clicked  = st.button(
-    "Run pipeline",
+    "Run",
     type             = "primary",
     disabled         = run_disabled,
     use_container_width = True,
@@ -190,10 +195,11 @@ if run_clicked:
     final_result: PipelineResult | None = None
 
     gen = run_pipeline(
-        prompt   = prompt,
-        schema   = schema,
-        csv_path = csv_path,
-        api_key  = api_key,
+        prompt         = prompt,
+        schema         = schema,
+        csv_path       = csv_path,
+        api_key        = api_key,
+        selected_model = model_choice,
     )
 
     try:

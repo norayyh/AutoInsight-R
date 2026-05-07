@@ -70,31 +70,15 @@ class PipelineResult:
 
 # ── prompt builders ───────────────────────────────────────────────────────────
 
-def _build_schema_context(schema: dict) -> str:
-    if not schema:
-        return ""
-    return textwrap.dedent(f"""
-        Dataset schema:
-        - Shape   : {schema['shape'][0]} rows x {schema['shape'][1]} columns
-        - Columns : {schema['columns']}
-        - Dtypes  : {schema['dtypes']}
-        - Sample  :
-        {schema['sample_str']}
-    """).strip()
-
-
-def _build_system_prompt(schema: dict) -> str:
-    schema_ctx = _build_schema_context(schema)
-    return textwrap.dedent(f"""
+def _build_system_prompt() -> str:
+    return textwrap.dedent("""
         You are a Python data analysis assistant.
 
         The dataset is already loaded as a pandas DataFrame called `df`.
         You may also read it from 'data.csv' in the working directory.
 
         Available libraries: pandas, numpy, matplotlib, seaborn, sklearn.
-        Call plt.show() to render each chart — figures are saved automatically.
-
-        {schema_ctx}
+        Call plt.show() to render each chart -- figures are saved automatically.
 
         Rules:
         - Return only valid Python code.
@@ -167,10 +151,11 @@ def _call_claude(
 # ── main pipeline ─────────────────────────────────────────────────────────────
 
 def run_pipeline(
-    prompt:   str,
-    schema:   dict,
-    csv_path: str,
-    api_key:  str,
+    prompt:         str,
+    schema:         dict,
+    csv_path:       str,
+    api_key:        str,
+    selected_model: str = MODEL_HAIKU,
 ) -> Generator[StepResult, None, PipelineResult]:
     """
     Generator that yields StepResult objects as the pipeline progresses.
@@ -187,23 +172,23 @@ def run_pipeline(
             result = e.value
     """
     client        = anthropic.Anthropic(api_key=api_key)
-    system_prompt = _build_system_prompt(schema)
+    system_prompt = _build_system_prompt()
 
     # Conversation history — grows with each repair turn.
     history = [{"role": "user", "content": f"{system_prompt}\n\nTask: {prompt}"}]
 
-    # -- Step 1: Generate (always Haiku) --
+    # -- Step 1: Generate with user-selected model --
     yield StepResult(
         step="generate", attempt=1, status="running",
-        model=MODEL_HAIKU,
-        note="Haiku (default)",
+        model=selected_model,
+        note=model_label(selected_model),
     )
 
-    raw_code = _call_claude(client, history, MODEL_HAIKU)
+    raw_code = _call_claude(client, history, selected_model)
     code     = _clean_code(raw_code)
     history.append({"role": "assistant", "content": code})
 
-    yield StepResult(step="generate", attempt=1, status="done", model=MODEL_HAIKU, code=code)
+    yield StepResult(step="generate", attempt=1, status="done", model=selected_model, code=code)
 
     # -- Steps 2+: Execute / Repair loop --
     for attempt in range(MAX_RETRIES):
@@ -239,8 +224,8 @@ def run_pipeline(
         if attempt == MAX_RETRIES - 1:
             break
 
-        # Repair
-        repair_model  = select_model_for_attempt(attempt + 1)
+        # Repair — final attempt always escalates to Sonnet regardless of selection
+        repair_model  = MODEL_SONNET if attempt + 1 >= MAX_RETRIES - 1 else selected_model
         extra_context = _diagnose_error(exec_result["stderr"], schema)
         repair_msg    = _build_repair_message(code, exec_result["stderr"], extra_context)
 
